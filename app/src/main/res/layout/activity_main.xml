@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+   <LinearLayout
+       android:orientation="horizontal"
+       android:id="@+id/background"
+       android:layout_width="match_parent"
+       android:layout_height="196dp"
+       android:background="@color/colorPrimaryDark"
+       app:layout_constraintEnd_toEndOf="parent"
+       app:layout_constraintStart_toStartOf="parent"
+       app:layout_constraintTop_toTopOf="parent" />
+
+   <TextView
+      android:id="@+id/titleDoes"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:textSize="28sp"
+       android:text="@string/my_does"
+       app:layout_constraintStart_toStartOf="parent"
+       android:textAlignment="textStart"
+       android:layout_marginStart="32dp"
+       android:textColor="#FFF"
+       android:layout_marginTop="30dp"
+      app:layout_constraintTop_toTopOf="parent"/>
+
+   <TextView
+      android:id="@+id/subtitle"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+      android:textSize="18sp"
+      app:layout_constraintTop_toBottomOf="@id/titleDoes"
+      android:layout_marginTop="12dp"
+      app:layout_constraintStart_toStartOf="parent"
+       android:layout_marginStart="32dp"
+      android:text="@string/finish_them_today_quickly"
+      android:textColor="#9A95A5"/>
+
+   <LinearLayout
+       android:orientation="horizontal"
+       android:id="@+id/border"
+       android:layout_width="match_parent"
+       android:layout_height="1dp"
+      android:background="#FFF"
+      app:layout_constraintTop_toBottomOf="@id/subtitle"
+      android:layout_marginTop="8dp"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      android:layout_marginEnd="32dp"
+      android:layout_marginStart="32dp"/>
+
+   <androidx.recyclerview.widget.RecyclerView
+       android:id="@+id/recyclerView"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+      app:layout_constraintTop_toBottomOf="@id/border"
+      android:layout_marginTop="32dp"
+       app:layout_constraintStart_toStartOf="parent"
+       app:layout_constraintEnd_toEndOf="parent"
+       android:layout_marginStart="16dp"
+       android:layout_marginEnd="16dp"
+      app:layout_constraintBottom_toTopOf="@id/endPage"
+       android:layout_marginBottom="32dp"/>
+
+   <TextView
+      android:id="@+id/endPage"
+       android:layout_width="wrap_content"
+       app:layout_constraintStart_toStartOf="parent"
+       app:layout_constraintEnd_toEndOf="parent"
+       android:text="@string/no_more_does"
+       android:textSize="18sp"
+       android:textColor="#3C2C2C"
+       android:layout_height="wrap_content"
+      app:layout_constraintTop_toBottomOf="@+id/recyclerView"/>
+
+   <Button
+      android:id="@+id/addBtn"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintTop_toTopOf="@id/titleDoes"
+      app:layout_constraintHorizontal_bias="0.825"
+      app:layout_constraintBottom_toBottomOf="@id/subtitle"
+      android:background="@drawable/ic_baseline_add"
+       android:layout_height="32dp"
+       android:layout_width="32dp" />
+
+<LinearLayout
+    android:layout_width="48dp"
+    android:layout_height="48dp"
+   app:layout_constraintBottom_toBottomOf="@id/addBtn"
+   app:layout_constraintTop_toTopOf="@id/addBtn"
+   app:layout_constraintStart_toStartOf="@id/addBtn"
+   app:layout_constraintEnd_toEndOf="@id/addBtn"
+   android:background="@drawable/border1"/>
+
+   <ProgressBar
+       android:visibility="gone"
+       android:id="@+id/progressBarMain"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:indeterminateTint="@color/colorPrimaryDark"
+       app:layout_constraintStart_toStartOf="parent"
+       app:layout_constraintEnd_toEndOf="parent"
+       app:layout_constraintTop_toTopOf="parent"
+       app:layout_constraintBottom_toBottomOf="parent"
+       app:layout_constraintVertical_bias="0.4"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
