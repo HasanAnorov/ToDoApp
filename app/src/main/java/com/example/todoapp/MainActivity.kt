@@ -8,6 +8,8 @@ import android.view.View
 import android.widget.Toast
 import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.ItemTouchHelper
+import androidx.recyclerview.widget.ItemTouchHelper.*
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_adding_new_task.*
 import kotlinx.android.synthetic.main.activity_main.*
@@ -29,12 +31,15 @@ class MainActivity : AppCompatActivity() {
         }
 
         getAllPost()
+        var itemTouchHelper=ItemTouchHelper(SwipeToDelete(adapter,this,this))
+        itemTouchHelper.attachToRecyclerView(recyclerView)
 
     }
 
         private fun getAllPost() {
-         //   setLoading(true)
-            val result:MutableList<Task> = mutableListOf()
+
+
+            var result:ArrayList<Task> = arrayListOf()
 
             db.collection("task").addSnapshotListener { value, error ->
                 if(error!=null){
@@ -50,16 +55,8 @@ class MainActivity : AppCompatActivity() {
                     }
                     adapter.models=result
                     Log.d("malumotlar",result.toString())
-                  //  setLoading(false)
+
                 }
             }
         }
-//    private fun setLoading(isLoading:Boolean){
-//        progressBarMain.visibility= if(isLoading)  View.VISIBLE else View.GONE
-//        etDeadline.isEnabled=!isLoading
-//        etDesc.isEnabled=!isLoading
-//        etTask.isEnabled=!isLoading
-//        create.isEnabled=!isLoading
-//        cancel.isEnabled=!isLoading
-//    }
-}
+    }
