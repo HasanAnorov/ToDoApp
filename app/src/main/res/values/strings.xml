@@ -15,4 +15,8 @@
     <string name="when_will">When will ?</string>
     <string name="cancel">Cancel</string>
     <string name="create">Create</string>
+    <string name="please_select_time">Please select time</string>
+    <string name="update">Update</string>
+    <string name="delete">Delete</string>
+    <string name="edit_task">Edit task</string>
 </resources>

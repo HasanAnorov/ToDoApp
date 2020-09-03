@@ -14,7 +14,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_adding_new_task.*
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(){
 
     private val db = FirebaseFirestore.getInstance()
     private var adapter=TaskAdapter()
@@ -24,6 +24,15 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         recyclerView.adapter=adapter
+        adapter.setOnItemClickListener {
+            val intent=Intent(this,EditingTask::class.java)
+            intent.putExtra("taskId",it.id)
+            //adapter.removeNote(it)
+            startActivity(intent)
+        }
+        adapter.removeRecyclerViewItem{
+            intent.putExtra("noteItem",it)
+        }
 
         addBtn.setOnClickListener {
             val intent=Intent(this,AddingNewTask::class.java)
@@ -31,8 +40,6 @@ class MainActivity : AppCompatActivity() {
         }
 
         getAllPost()
-        var itemTouchHelper=ItemTouchHelper(SwipeToDelete(adapter,this,this))
-        itemTouchHelper.attachToRecyclerView(recyclerView)
 
     }
 
@@ -49,6 +56,7 @@ class MainActivity : AppCompatActivity() {
                 db.collection("task").get().addOnSuccessListener {
                     it.documents.forEach {doc ->
                         val model= doc.toObject(Task::class.java)
+                        model?.id=doc.id
                         model?.let {
                             result.add(model)
                         }
@@ -59,4 +67,6 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
-    }
+
+
+}
