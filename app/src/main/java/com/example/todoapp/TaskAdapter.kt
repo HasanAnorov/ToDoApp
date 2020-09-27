@@ -20,7 +20,7 @@ class TaskAdapter:RecyclerView.Adapter<TaskAdapter.TaskViewHolder>() {
         }
     }
 
-    var models:List<Task> = listOf()
+    var models:ArrayList<Task> = arrayListOf()
         set(value) {
             field=value
             notifyDataSetChanged()
